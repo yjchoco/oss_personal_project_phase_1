@@ -4,7 +4,7 @@ import torch.nn as nn
 class DiseasePredictor(nn.Module):
     def __init__(self):
         super(DiseasePredictor, self).__init__()
-        self.fc1 = nn.Linear(3, 50)
+        self.fc1 = nn.Linear(4, 50)
         self.fc2 = nn.Linear(50, 50)
         self.fc3 = nn.Linear(50, 2)
 

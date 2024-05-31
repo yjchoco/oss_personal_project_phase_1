@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+torch
+jinja2
+numpy
+pillow
+scikit-learn
+torch-geometric

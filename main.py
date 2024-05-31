@@ -19,10 +19,10 @@ def main(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/predict")
-def predict(request: Request, age: int = Form(...), weight: float = Form(...), blood_pressure: float = Form(...)):
+def predict(request: Request, age: int = Form(...), weight: float = Form(...), height: float = Form(...), blood_pressure: float = Form(...)):
     try:
         # 입력받은 데이터를 텐서로 변환
-        input_data = torch.tensor([[age, weight, blood_pressure]], dtype=torch.float32)
+        input_data = torch.tensor([[age, weight, height, blood_pressure]], dtype=torch.float32)
         
         # 모델 예측
         output = model(input_data)
