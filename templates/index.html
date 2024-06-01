@@ -6,15 +6,47 @@
 <body>
     <h1>Enter Your Health Data</h1>
     <form action="/predict" method="post">
-        <label for="age">Age:</label><br>
-        <input type="number" id="age" name="age"><br>
-        <label for="weight">Weight:</label><br>
-        <input type="number" id="weight" name="weight"><br>
-        <label for="height">Height:</label><br>
-        <input type="number" id="height" name="height"><br>
-        <label for="blood_pressure">Blood Pressure:</label><br>
-        <input type="number" id="blood_pressure" name="blood_pressure"><br>
+        <label for="blood_pressure">High Blood Pressure:</label><br>
+        <input type="radio" id="bp_yes" name="high_blood_pressure" value="yes">
+        <label for="bp_yes">Yes</label><br>
+        <input type="radio" id="bp_no" name="high_blood_pressure" value="no">
+        <label for="bp_no">No</label><br>
+
+        <label for="cholesterol">High Cholesterol:</label><br>
+        <input type="radio" id="chol_yes" name="high_cholesterol" value="yes">
+        <label for="chol_yes">Yes</label><br>
+        <input type="radio" id="chol_no" name="high_cholesterol" value="no">
+        <label for="chol_no">No</label><br>
+
+        <label for="bmi">BMI (Body Mass Index):</label><br>
+        <input type="number" step="0.1" id="bmi" name="bmi"><br>
+
+        <label for="smoking">Smoking (at least 100 cigarettes in your life):</label><br>
+        <input type="radio" id="smoke_yes" name="smoking" value="yes">
+        <label for="smoke_yes">Yes</label><br>
+        <input type="radio" id="smoke_no" name="smoking" value="no">
+        <label for="smoke_no">No</label><br>
+
+        <label for="fruit">Fruit Consumption (1 or more times per day):</label><br>
+        <input type="radio" id="fruit_yes" name="fruit_consumption" value="yes">
+        <label for="fruit_yes">Yes</label><br>
+        <input type="radio" id="fruit_no" name="fruit_consumption" value="no">
+        <label for="fruit_no">No</label><br>
+
+        <label for="vegetables">Vegetable Consumption (1 or more times per day):</label><br>
+        <input type="radio" id="veg_yes" name="vegetable_consumption" value="yes">
+        <label for="veg_yes">Yes</label><br>
+        <input type="radio" id="veg_no" name="vegetable_consumption" value="no">
+        <label for="veg_no">No</label><br>
+
+        <label for="alcohol">Alcohol Consumption (Heavy Drinker):</label><br>
+        <input type="radio" id="alc_yes" name="alcohol_consumption" value="yes">
+        <label for="alc_yes">Yes</label><br>
+        <input type="radio" id="alc_no" name="alcohol_consumption" value="no">
+        <label for="alc_no">No</label><br>
+
         <input type="submit" value="Predict">
     </form>
 </body>
 </html>
+
