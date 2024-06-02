@@ -16,6 +16,13 @@ Docker를 이용하여 실행하는 프로젝트이므로, 다음 운영 체제�
 
 심장병에는 여러 유형이 있지만, 대부분의 사람들은 흉통, 심장마비, 또는 갑작스러운 심장 정지와 같은 증상이 나타난 후에야 자신이 이 질병을 가지고 있다는 것을 알게 됩니다. 심장마비와 같은 부정적인 결과가 발생하기 전에 심장 질환을 정확하게 예측할 수 있는 예방 조치가 필요합니다. 고혈압, 고혈중 콜레스테롤, 흡연이 심장 질환의 세 가지 주요 위험 요소인데, 이를 포함한 7가지 수치를 사용하여 심장병 위험을 감지할 수 있습니다.
 
+
+
+*Trained Model Accuracy: 0.9032910100673116* <br/>
+제가 학습한 모델의 정확도는 **90.33%** 입니다. (heart_disease_model.pth)
+
+
+
 ### About the dataset:
 Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방센터(CDC)가 매년 실시하는 건강 관련 전화 설문 조사입니다. 가져온 데이터셋은 심장병의 이진 분류를 위해 사용될 253,680개의 정리된 BRFSS 2015 설문 응답을 사용합니다. 원본 데이터셋의 330개의 특징 중, 7개만을 사용했습니다.
 
@@ -28,9 +35,6 @@ Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방�
 6. Vegetable Consumption: Do you consume vegetables 1 or more times per day?
 7. Alcohol Consumption: Are you a heavy drinker?
 
-
-*Trained Model Accuracy: 0.9032910100673116* <br/>
-제가 학습한 모델의 정확도는 **90.33%** 입니다. (heart_disease_model.pth)
 
 
 ## 실행 방법
