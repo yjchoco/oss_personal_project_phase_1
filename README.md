@@ -16,7 +16,7 @@ Docker를 이용하여 실행하는 프로젝트이므로, 다음 운영 체제�
 
 심장병에는 여러 유형이 있지만, 대부분의 사람들은 흉통, 심장마비, 또는 갑작스러운 심장 정지와 같은 증상이 나타난 후에야 자신이 이 질병을 가지고 있다는 것을 알게 됩니다. 심장마비와 같은 부정적인 결과가 발생하기 전에 심장 질환을 정확하게 예측할 수 있는 예방 조치가 필요합니다. 고혈압, 고혈중 콜레스테롤, 흡연이 심장 질환의 세 가지 주요 위험 요소인데, 이를 포함한 7가지 수치를 사용하여 심장병 위험을 감지할 수 있습니다.
 
-#### About the dataset:
+### About the dataset:
 Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방센터(CDC)가 매년 실시하는 건강 관련 전화 설문 조사입니다. 가져온 데이터셋은 심장병의 이진 분류를 위해 사용될 253,680개의 정리된 BRFSS 2015 설문 응답을 사용합니다. 원본 데이터셋의 330개의 특징 중, 7개만을 사용했습니다.
 
 **사용한 features**:
@@ -29,12 +29,14 @@ Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방�
 7. Alcohol Consumption: Are you a heavy drinker?
 
 
-*Accuracy: 0.9032910100673116*
+*Trained Model Accuracy: 0.9032910100673116*
+제가 학습한 모델의 정확도는 **90.33%** 입니다.
 
-### 실행 방법
+
+## 실행 방법
 이 프로젝트는 Docker를 사용하여 운영 체제에 관계없이 일관된 환경에서 실행할 수 있습니다. 아래는 Windows, Linux, MacOS에서 웹사이트를 실행하는 방법입니다.
 
-##### Windows, Linux, MacOS 공통 실행 방법
+#### Windows, Linux, MacOS 공통 실행 방법
 1. **Docker 설치**
     - Docker 공식 웹사이트에서 Docker를 설치합니다.
 
@@ -58,6 +60,7 @@ Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방�
     - 웹 브라우저를 열고 [http://localhost:8000/](http://localhost:8000/)에 접속합니다.
 
 
+#### 추가 설명
 - Docker를 사용하여 실행되므로, Docker가 설치되어 있으면 Windows, Linux, MacOS에서 동일한 방법으로 실행할 수 있습니다.
 
 - 이미 사용 중인 포트가 있는 경우, `-p <host_port>:8000` 형식으로 다른 포트를 지정하여 실행할 수 있습니다.
@@ -67,21 +70,22 @@ Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방�
   그런 다음 [http://localhost:8080/](http://localhost:8080/)에 접속합니다.
 
 
-### 실행 예시
+## 실행 예시
 
-##### 웹사이트 첫 화면입니다.
+#### 웹사이트 첫 화면입니다.
 ![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/6b1ce830-cb32-4960-96e5-8d658ce6de62)
 
-##### 해당하는 항목 체크한 후, predict를 누르면,
+#### 해당하는 항목 체크한 후, predict를 누르면,
 ![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/58e90311-c3d9-41c0-a190-9bfc414e4a52)
 
-##### predition 결과가 출력됩니다.
+#### predition 결과가 출력됩니다.
 ![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/88c3933a-3edd-4c8f-bebe-a0b4a4fe9349)
 
 
-### **코드 설명**
+## **코드 설명**
+------
 
-### *main.py*
+## *main.py*
 이 main.py 파일은 FastAPI를 사용하여 간단한 웹 애플리케이션을 구축합니다.
 
 ##### DiseasePredictor 클래스 
@@ -93,9 +97,9 @@ predict 함수는 데이터를 입력 받아 모델을 사용하여 예측을 �
 
 
 FastAPI 애플리케이션을 초기화하고 템플릿 디렉토리를 설정한 뒤, 사용자가 입력한 폼 데이터를 받아 심장 질환 예측을 수행합니다. 예측 결과에 따라 "Low risk of disease" 또는 "High risk of disease" 메시지를 생성합니다. 사용자가 입력한 폼 데이터를 기반으로 심장 질환 발생 가능성을 예측하는 간단한 웹 애플리케이션을 구축합니다.
+-------
 
-
-### *train.py*
+## *train.py*
 모델을 학습하여 훈련된 모델의 가중치를 저장할때 필요한 코드 파일로, 웹사이트를 실행할 때에는 필요하지 않습니다.
 
 ##### DiseasePredictor 클래스
@@ -108,6 +112,8 @@ FastAPI 애플리케이션을 초기화하고 템플릿 디렉토리를 설정�
 ##### evaluate_model 함수
 이 함수는 테스트 데이터셋을 사용하여 모델을 평가합니다.
 모델을 eval 모드로 설정하고, 테스트 데이터셋을 통해 예측을 수행한 후, 정확도를 계산하여 반환합니다.
+
+--------
 
 ##### 전체 코드 흐름
 1. **데이터 로드 및 전처리**
@@ -128,6 +134,7 @@ FastAPI 애플리케이션을 초기화하고 템플릿 디렉토리를 설정�
 5. **모델 저장**
     - 훈련된 모델의 가중치를 저장합니다.
 
+-------
 
 ##### requirements.txt
     ```sh
@@ -144,14 +151,14 @@ FastAPI 애플리케이션을 초기화하고 템플릿 디렉토리를 설정�
 도커 이미지를 빌드할 때, 이 requirements.txt 파일에 명시된 모든 패키지들이 자동으로 설치됩니다.
 
 
-### To Do List
+## To Do List
 - 모델 정확도 향상
 - 웹사이트 꾸미기
 - 심장병 예측 이외의 다른 기능들 추가하기
 
 
 
-### Reference
+## Reference
 [1] https://www.kaggle.com/code/alexteboul/heart-disease-health-indicators-dataset-notebook  (kaggle dataset)
 
 [2] https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset  (kaggle dataset)
