@@ -2,9 +2,24 @@ from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
 import torch
 import torch.nn.functional as F
+import torch.nn as nn
 import numpy as np
-from model import DiseasePredictor
 
+class DiseasePredictor(nn.Module):
+    def __init__(self):
+        super(DiseasePredictor, self).__init__()
+        self.fc1 = nn.Linear(7, 64)
+        self.fc2 = nn.Linear(64, 32)
+        self.fc3 = nn.Linear(32, 2)
+        self.dropout = nn.Dropout(0.5)
+    
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.dropout(x)
+        x = torch.relu(self.fc2(x))
+        x = self.dropout(x)
+        x = self.fc3(x)
+        return x
 
 model = DiseasePredictor()
 model.load_state_dict(torch.load('heart_disease_model.pth', map_location='cpu'))
@@ -35,7 +50,6 @@ async def predict(
     vegetable_consumption: str = Form(...),
     alcohol_consumption: str = Form(...)
 ):
-    # 입력 데이터를 숫자로 변환
     high_blood_pressure = 1 if high_blood_pressure == "yes" else 0
     high_cholesterol = 1 if high_cholesterol == "yes" else 0
     smoking = 1 if smoking == "yes" else 0
