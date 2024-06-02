@@ -29,8 +29,8 @@ Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방�
 7. Alcohol Consumption: Are you a heavy drinker?
 
 
-*Trained Model Accuracy: 0.9032910100673116*
-제가 학습한 모델의 정확도는 **90.33%** 입니다.
+*Trained Model Accuracy: 0.9032910100673116* <br/>
+제가 학습한 모델의 정확도는 **90.33%** 입니다. (heart_disease_model.pth)
 
 
 ## 실행 방법
@@ -97,6 +97,7 @@ predict 함수는 데이터를 입력 받아 모델을 사용하여 예측을 �
 
 
 FastAPI 애플리케이션을 초기화하고 템플릿 디렉토리를 설정한 뒤, 사용자가 입력한 폼 데이터를 받아 심장 질환 예측을 수행합니다. 예측 결과에 따라 "Low risk of disease" 또는 "High risk of disease" 메시지를 생성합니다. 사용자가 입력한 폼 데이터를 기반으로 심장 질환 발생 가능성을 예측하는 간단한 웹 애플리케이션을 구축합니다.
+
 -------
 
 ## *train.py*
@@ -112,8 +113,6 @@ FastAPI 애플리케이션을 초기화하고 템플릿 디렉토리를 설정�
 ##### evaluate_model 함수
 이 함수는 테스트 데이터셋을 사용하여 모델을 평가합니다.
 모델을 eval 모드로 설정하고, 테스트 데이터셋을 통해 예측을 수행한 후, 정확도를 계산하여 반환합니다.
-
---------
 
 ##### 전체 코드 흐름
 1. **데이터 로드 및 전처리**
@@ -136,7 +135,7 @@ FastAPI 애플리케이션을 초기화하고 템플릿 디렉토리를 설정�
 
 -------
 
-##### requirements.txt
+### requirements.txt
     ```sh
         fastapi
         uvicorn
@@ -150,8 +149,9 @@ FastAPI 애플리케이션을 초기화하고 템플릿 디렉토리를 설정�
     ```
 도커 이미지를 빌드할 때, 이 requirements.txt 파일에 명시된 모든 패키지들이 자동으로 설치됩니다.
 
+-------
 
-## To Do List
+# To Do List
 - 모델 정확도 향상
 - 웹사이트 꾸미기
 - 심장병 예측 이외의 다른 기능들 추가하기
