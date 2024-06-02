@@ -68,10 +68,12 @@ Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방�
 
 
 ### 실행 예시
-![alt text](image.png)
+![스크린샷 2024-06-02 141215](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/40ce4351-b4dc-4dd3-a58a-3620bb2fa0bc)
+
 
 
 ### Reference
 [1] https://www.kaggle.com/code/alexteboul/heart-disease-health-indicators-dataset-notebook  (kaggle dataset)
+
 [2] https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset  (kaggle dataset)
 
