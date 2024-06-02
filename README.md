@@ -31,7 +31,7 @@ Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방�
 
 *Accuracy: 0.9032910100673116*
 
-### 심장병 예측 모델 웹사이트 실행 방법
+### 실행 방법
 이 프로젝트는 Docker를 사용하여 운영 체제에 관계없이 일관된 환경에서 실행할 수 있습니다. 아래는 Windows, Linux, MacOS에서 웹사이트를 실행하는 방법입니다.
 
 ##### Windows, Linux, MacOS 공통 실행 방법
@@ -68,7 +68,86 @@ Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방�
 
 
 ### 실행 예시
-![스크린샷 2024-06-02 141215](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/40ce4351-b4dc-4dd3-a58a-3620bb2fa0bc)
+
+##### 웹사이트 첫 화면입니다.
+![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/6b1ce830-cb32-4960-96e5-8d658ce6de62)
+
+##### 해당하는 항목 체크한 후, predict를 누르면,
+![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/58e90311-c3d9-41c0-a190-9bfc414e4a52)
+
+##### predition 결과가 출력됩니다.
+![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/88c3933a-3edd-4c8f-bebe-a0b4a4fe9349)
+
+
+### **코드 설명**
+
+### *main.py*
+이 main.py 파일은 FastAPI를 사용하여 간단한 웹 애플리케이션을 구축합니다.
+
+##### DiseasePredictor 클래스 
+이 클래스는 심장 질환 예측을 위한 인공 신경망 모델을 정의합니다.
+DiseasePredictor 모델 인스턴스를 생성하고 저장된 가중치(heart_disease_model.pth)를 로드합니다.
+
+##### predict 함수
+predict 함수는 데이터를 입력 받아 모델을 사용하여 예측을 수행합니다.
+
+
+FastAPI 애플리케이션을 초기화하고 템플릿 디렉토리를 설정한 뒤, 사용자가 입력한 폼 데이터를 받아 심장 질환 예측을 수행합니다. 예측 결과에 따라 "Low risk of disease" 또는 "High risk of disease" 메시지를 생성합니다. 사용자가 입력한 폼 데이터를 기반으로 심장 질환 발생 가능성을 예측하는 간단한 웹 애플리케이션을 구축합니다.
+
+
+### *train.py*
+모델을 학습하여 훈련된 모델의 가중치를 저장할때 필요한 코드 파일로, 웹사이트를 실행할 때에는 필요하지 않습니다.
+
+##### DiseasePredictor 클래스
+이 클래스는 심장 질환 예측을 위한 인공 신경망 모델을 정의합니다.
+3개의 선형 계층과 dropout 계층이 포함된 신경망을 정의하고, forward 함수를 통해 입력 데이터를 순전파시킬 수 있습니다.
+
+##### HeartDiseaseDataset 클래스
+이 클래스는 데이터셋을 정의합니다. 데이터셋을 초기화하고, 입력 데이터(X)와 레이블(y)을 텐서로 변환합니다.
+
+##### evaluate_model 함수
+이 함수는 테스트 데이터셋을 사용하여 모델을 평가합니다.
+모델을 eval 모드로 설정하고, 테스트 데이터셋을 통해 예측을 수행한 후, 정확도를 계산하여 반환합니다.
+
+##### 전체 코드 흐름
+1. **데이터 로드 및 전처리**
+    - CSV 파일에서 데이터를 로드하고, 데이터를 train set와 test set으로 분할합니다.
+
+2. **데이터셋 및 데이터로더 생성**
+    - `HeartDiseaseDataset` 클래스를 사용하여 훈련 데이터와 테스트 데이터셋을 생성합니다.
+    - `DataLoader`를 사용하여 배치 단위로 데이터를 로드할 수 있도록 합니다.
+
+3. **모델, 손실 함수, 최적화 도구 초기화**
+    - `DiseasePredictor` 모델을 생성하고,
+    - 손실함수로는 cross-entropy loss, 옵티마이저로는 Adam을 사용합니다.
+
+4. **모델 훈련**
+    - 지정된 에포크 동안 훈련 데이터를 사용하여 모델을 훈련시킵니다.
+    - 각 에포크 후 테스트 데이터셋을 사용하여 모델의 정확도를 평가합니다.
+
+5. **모델 저장**
+    - 훈련된 모델의 가중치를 저장합니다.
+
+
+##### requirements.txt
+    ```sh
+        fastapi
+        uvicorn
+        torch
+        jinja2
+        numpy
+        pillow
+        scikit-learn
+        torch-geometric
+        pandas
+    ```
+도커 이미지를 빌드할 때, 이 requirements.txt 파일에 명시된 모든 패키지들이 자동으로 설치됩니다.
+
+
+### To Do List
+- 모델 정확도 향상
+- 웹사이트 꾸미기
+- 심장병 예측 이외의 다른 기능들 추가하기
 
 
 
