@@ -167,3 +167,4 @@ FastAPI 애플리케이션을 초기화하고 템플릿 디렉토리를 설정�
 
 [2] https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset  (kaggle dataset)
 
+[3] 오픈소스소프트웨어실습 week10 수업 자료
