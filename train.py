@@ -5,7 +5,22 @@ import torch.optim as optim
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 import joblib
-from model import DiseasePredictor
+
+class DiseasePredictor(nn.Module):
+    def __init__(self):
+        super(DiseasePredictor, self).__init__()
+        self.fc1 = nn.Linear(7, 64)
+        self.fc2 = nn.Linear(64, 32)
+        self.fc3 = nn.Linear(32, 2)
+        self.dropout = nn.Dropout(0.5)
+    
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.dropout(x)
+        x = torch.relu(self.fc2(x))
+        x = self.dropout(x)
+        x = self.fc3(x)
+        return x
 
 
 df = pd.read_csv('heart_disease.csv')
@@ -37,17 +52,33 @@ model = DiseasePredictor()
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
+def evaluate_model(model, test_loader):
+    model.eval()
+    all_preds = []
+    all_labels = []
+    with torch.no_grad():
+        for X_batch, y_batch in test_loader:
+            outputs = model(X_batch)
+            _, preds = torch.max(outputs, 1)
+            all_preds.extend(preds.numpy())
+            all_labels.extend(y_batch.numpy())
+    
+    accuracy = accuracy_score(all_labels, all_preds)
+    return accuracy
+
 # 모델 훈련
 num_epochs = 20
 for epoch in range(num_epochs):
     model.train()
-    print(epoch)
     for X_batch, y_batch in train_loader:
         optimizer.zero_grad()
         outputs = model(X_batch)
         loss = criterion(outputs, y_batch)
         loss.backward()
         optimizer.step()
+    accuracy = evaluate_model(model, test_loader)
+    print(f'Epoch {epoch+1}/{num_epochs}')
+    print(f'Accuracy: {accuracy}')
 
 # 모델 저장
 torch.save(model.state_dict(), 'heart_disease_model.pth')
