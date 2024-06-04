@@ -2,51 +2,119 @@
 <html>
 <head>
     <title>Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+            border-radius: 8px;
+            width: 300px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input[type="number"],
+        input[type="radio"] {
+            margin-bottom: 10px;
+        }
+        .radio-group {
+            margin-bottom: 15px;
+        }
+        .radio-group label {
+            display: inline;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Enter Your Health Data</h1>
-    <form action="/predict" method="post">
-        <label for="blood_pressure">High Blood Pressure:</label><br>
-        <input type="radio" id="bp_yes" name="high_blood_pressure" value="yes">
-        <label for="bp_yes">Yes</label><br>
-        <input type="radio" id="bp_no" name="high_blood_pressure" value="no">
-        <label for="bp_no">No</label><br>
+    <div class="container">
+        <h1>Enter Your Health Data</h1>
+        <form action="/predict" method="post">
+            <div class="radio-group">
+                <label for="blood_pressure">High Blood Pressure:</label><br>
+                <input type="radio" id="bp_yes" name="high_blood_pressure" value="yes">
+                <label for="bp_yes">Yes</label>
+                <input type="radio" id="bp_no" name="high_blood_pressure" value="no">
+                <label for="bp_no">No</label>
+            </div>
 
-        <label for="cholesterol">High Cholesterol:</label><br>
-        <input type="radio" id="chol_yes" name="high_cholesterol" value="yes">
-        <label for="chol_yes">Yes</label><br>
-        <input type="radio" id="chol_no" name="high_cholesterol" value="no">
-        <label for="chol_no">No</label><br>
+            <div class="radio-group">
+                <label for="cholesterol">High Cholesterol:</label><br>
+                <input type="radio" id="chol_yes" name="high_cholesterol" value="yes">
+                <label for="chol_yes">Yes</label>
+                <input type="radio" id="chol_no" name="high_cholesterol" value="no">
+                <label for="chol_no">No</label>
+            </div>
 
-        <label for="bmi">BMI (Body Mass Index):</label><br>
-        <input type="number" step="0.1" id="bmi" name="bmi"><br>
+            <label for="bmi">BMI (Body Mass Index):</label><br>
+            <input type="number" step="0.1" id="bmi" name="bmi"><br>
 
-        <label for="smoking">Smoking (at least 100 cigarettes in your life):</label><br>
-        <input type="radio" id="smoke_yes" name="smoking" value="yes">
-        <label for="smoke_yes">Yes</label><br>
-        <input type="radio" id="smoke_no" name="smoking" value="no">
-        <label for="smoke_no">No</label><br>
+            <div class="radio-group">
+                <label for="smoking">Smoking (at least 100 cigarettes in your life):</label><br>
+                <input type="radio" id="smoke_yes" name="smoking" value="yes">
+                <label for="smoke_yes">Yes</label>
+                <input type="radio" id="smoke_no" name="smoking" value="no">
+                <label for="smoke_no">No</label>
+            </div>
 
-        <label for="fruit">Fruit Consumption (1 or more times per day):</label><br>
-        <input type="radio" id="fruit_yes" name="fruit_consumption" value="yes">
-        <label for="fruit_yes">Yes</label><br>
-        <input type="radio" id="fruit_no" name="fruit_consumption" value="no">
-        <label for="fruit_no">No</label><br>
+            <div class="radio-group">
+                <label for="fruit">Fruit Consumption (1 or more times per day):</label><br>
+                <input type="radio" id="fruit_yes" name="fruit_consumption" value="yes">
+                <label for="fruit_yes">Yes</label>
+                <input type="radio" id="fruit_no" name="fruit_consumption" value="no">
+                <label for="fruit_no">No</label>
+            </div>
 
-        <label for="vegetables">Vegetable Consumption (1 or more times per day):</label><br>
-        <input type="radio" id="veg_yes" name="vegetable_consumption" value="yes">
-        <label for="veg_yes">Yes</label><br>
-        <input type="radio" id="veg_no" name="vegetable_consumption" value="no">
-        <label for="veg_no">No</label><br>
+            <div class="radio-group">
+                <label for="vegetables">Vegetable Consumption (1 or more times per day):</label><br>
+                <input type="radio" id="veg_yes" name="vegetable_consumption" value="yes">
+                <label for="veg_yes">Yes</label>
+                <input type="radio" id="veg_no" name="vegetable_consumption" value="no">
+                <label for="veg_no">No</label>
+            </div>
 
-        <label for="alcohol">Alcohol Consumption (Heavy Drinker):</label><br>
-        <input type="radio" id="alc_yes" name="alcohol_consumption" value="yes">
-        <label for="alc_yes">Yes</label><br>
-        <input type="radio" id="alc_no" name="alcohol_consumption" value="no">
-        <label for="alc_no">No</label><br>
+            <div class="radio-group">
+                <label for="alcohol">Alcohol Consumption (Heavy Drinker):</label><br>
+                <input type="radio" id="alc_yes" name="alcohol_consumption" value="yes">
+                <label for="alc_yes">Yes</label>
+                <input type="radio" id="alc_no" name="alcohol_consumption" value="no">
+                <label for="alc_no">No</label>
+            </div>
 
-        <input type="submit" value="Predict">
-    </form>
+            <input type="submit" value="Predict">
+        </form>
+    </div>
 </body>
 </html>
-
