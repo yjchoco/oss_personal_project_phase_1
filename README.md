@@ -77,13 +77,13 @@ Behavioral Risk Factor Surveillance System (BRFSS)는 미국 질병통제예방�
 ## 실행 예시
 
 #### 웹사이트 첫 화면입니다.
-![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/6b1ce830-cb32-4960-96e5-8d658ce6de62)
+![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/22bc27e7-a9af-479a-b75e-8c9ec02c37ec)
 
 #### 해당하는 항목 체크한 후, predict를 누르면,
-![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/58e90311-c3d9-41c0-a190-9bfc414e4a52)
+![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/b6dc1619-87e7-41bf-8901-272001eeec62)
 
 #### predition 결과가 출력됩니다.
-![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/88c3933a-3edd-4c8f-bebe-a0b4a4fe9349)
+![image](https://github.com/yjchoco/oss_personal_project_phase_1/assets/105093937/fd644f83-4a4a-4384-a76e-c07bde19055d)
 
 
 ## **코드 설명**
