@@ -1,4 +1,4 @@
-# oss_personal_project_phase_1
+# OSS Personal Project
 
 
 # 지원 Operating Systems
